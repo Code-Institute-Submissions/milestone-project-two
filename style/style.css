@@ -1,0 +1,27 @@
+.button-container {
+    width: 500px;
+    height: 500px;
+}
+
+.button {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000;
+}
+
+#red {
+    background-color: red;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#green {
+    background-color: green;
+}
+
+#yellow {
+    background-color: yellow;
+}

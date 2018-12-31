@@ -3,6 +3,17 @@ var clickedColours = [];
 var gameRunning = false;
 var turnCounter = 0;
 var currentTurnColours = [];
+var totalTurns = 5;
+var colours = ['red', 'blue', 'green', 'yellow'];
+var speedSetting = 800;
+
+var audioOn = true;
+var redAudio = new Audio('assets/audio/red.wav');
+var blueAudio = new Audio('assets/audio/blue.wav');
+var greenAudio = new Audio('assets/audio/green.wav');
+var yellowAudio = new Audio('assets/audio/yellow.wav');
+var successAudio = new Audio('assets/audio/success.wav');
+var failAudio = new Audio('assets/audio/fail.mp3');
 
 $(document).ready(function() {
 
@@ -11,9 +22,13 @@ $(document).ready(function() {
         if (gameRunning != false) {
 
             var colour = $(this).attr('id').toString();
-            $(this).addClass(colour + "-glow").delay(300).queue(function() {
+            $(this).addClass(colour + "-glow").delay(200).queue(function() {
                 $(this).removeClass(colour + "-glow").dequeue();
             });
+
+            if (audioOn) {
+                playAudio(colour);
+            }
 
             //Add clicked button id to stack
             clickedColours.push($(this).attr('id'));
@@ -24,6 +39,7 @@ $(document).ready(function() {
                 //reset here if the last click was wrong
                 if (!compareArrays(clickedColours, currentTurnColours)) {
 
+                    playAudio("fail");
                     alert("Not even nearly...");
                     resetFunction();
 
@@ -37,13 +53,24 @@ $(document).ready(function() {
 
                     if (!compareArrays(clickedColours, currentTurnColours)) {
 
+                        playAudio("fail");
                         alert("Oops, so close!");
                         resetFunction();
 
                     }
                     else {
 
-                        setTimeout(newTurn, 900);
+                        if (turnCounter == totalTurns) {
+
+                            playAudio("success");
+                            alert("YOU DID IT!");
+                            resetFunction();
+
+                        }
+                        else {
+                            setTimeout(newTurn, 800);
+                        }
+
                     }
                 }
         }
@@ -54,33 +81,58 @@ $(document).ready(function() {
 
 function startFunction() {
 
-    gameRunning = 1;
-    currentTurnColours.length = 0;
+    if (gameRunning == 1) {
+        return;
+    }
+    else {
 
-    var colours = ['red', 'blue', 'green', 'yellow'];
+        gameRunning = 1;
 
-    for (var i = 0; i < 50; i++) {
+        currentTurnColours.length = 0;
 
-        var randomColour = colours[Math.floor(Math.random() * colours.length)];
-        generatedColours.push(randomColour);
+        for (var i = 0; i < totalTurns; i++) {
+
+            var randomColour = colours[Math.floor(Math.random() * colours.length)];
+            generatedColours.push(randomColour);
+
+        }
+
+        newTurn();
 
     }
 
-    newTurn();
 
 }
 
 
-function highlightStack() {
+function changeDifficulty(val) {
 
+    switch (val) {
+        case 'easy':
+            speedSetting = 800;
+            totalTurns = 5;
+            break;
+        case 'medium':
+            speedSetting = 400;
+            totalTurns = 10;
+            break;
+        case 'hard':
+            speedSetting = 250;
+            totalTurns = 20;
+            break;
 
+        default:
+            speedSetting = 800;
+    }
+
+    resetFunction();
 
 }
 
 
 function newTurn() {
 
-    console.clear();
+    console.log(speedSetting);
     turnCounter++;
 
     $(".messageHolder").text("Turn Number: " + turnCounter.toString());
@@ -103,11 +155,15 @@ function playColours(i) {
 
     setTimeout(function() {
 
-        $("#" + divColour).addClass(divColour + "-glow").delay(300).queue(function() {
+        $("#" + divColour).addClass(divColour + "-glow").delay(speedSetting - 120).queue(function() {
             $("#" + divColour).removeClass(divColour + "-glow").dequeue();
         });
 
-    }, 620 * i);
+        if (audioOn) {
+            playAudio(divColour);
+        }
+
+    }, speedSetting * i);
 
 }
 
@@ -118,11 +174,9 @@ function resetFunction() {
     clickedColours.length = 0;
     generatedColours.length = 0;
     turnCounter = 0;
-    $(".click-output").text("");
-    $(".gen-output").text("");
-    $(".message").text("");
+
     $(".button").removeClass("button-glow");
-    $(".messageHolder").text("");
+    $(".messageHolder").text("Click to begin!");
 
 }
 
@@ -137,4 +191,27 @@ function compareArrays(arr1, arr2) {
     }
 
     return true;
+}
+
+function playAudio(colour) {
+
+    if (colour == "red") {
+        redAudio.play();
+    }
+    if (colour == "blue") {
+        blueAudio.play();
+    }
+    if (colour == "green") {
+        greenAudio.play();
+    }
+    if (colour == "yellow") {
+        yellowAudio.play();
+    }
+    if (colour == "success") {
+        successAudio.play();
+    }
+    if (colour == "fail") {
+        failAudio.play();
+    }
+
 }

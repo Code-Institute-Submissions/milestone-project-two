@@ -22,10 +22,15 @@
     <div class="container">
 
         <h1>Simon Game</h1>
-        <h3 class="messageHolder"></h3>
+        <h3 class="messageHolder">Click to begin!</h3>
 
         <button onclick="setTimeout(startFunction, 500)">Start</button>
         <button onclick="resetFunction()">Reset</button>
+        <select name="difficulty" onclick="changeDifficulty(this.value)">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
 
 
         <div class="button-container">

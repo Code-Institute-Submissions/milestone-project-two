@@ -5,13 +5,17 @@ var turnCounter = 0;
 var currentTurnColours = [];
 var totalTurns = 5;
 var colours = ['red', 'blue', 'green', 'yellow'];
+//var colours = ['red', 'red', 'red', 'red'];
 var speedSetting = 800;
 
 var audioOn = true;
-var redAudio = new Audio('assets/audio/red.wav');
-var blueAudio = new Audio('assets/audio/blue.wav');
-var greenAudio = new Audio('assets/audio/green.wav');
-var yellowAudio = new Audio('assets/audio/yellow.wav');
+var soundNb = 0;
+
+var redAudio = [new Audio('assets/audio/red.wav'), new Audio('assets/audio/red.wav')];
+var blueAudio = [new Audio('assets/audio/blue.wav'), new Audio('assets/audio/blue.wav')];
+var greenAudio = [new Audio('assets/audio/green.wav'), new Audio('assets/audio/green.wav')];
+var yellowAudio = [new Audio('assets/audio/yellow.wav'), new Audio('assets/audio/yellow.wav')];
+
 var successAudio = new Audio('assets/audio/success.wav');
 var failAudio = new Audio('assets/audio/fail.mp3');
 
@@ -117,7 +121,7 @@ function changeDifficulty(val) {
             totalTurns = 10;
             break;
         case 'hard':
-            speedSetting = 250;
+            speedSetting = 300;
             totalTurns = 20;
             break;
 
@@ -196,16 +200,16 @@ function compareArrays(arr1, arr2) {
 function playAudio(colour) {
 
     if (colour == "red") {
-        redAudio.play();
+        redAudio[ soundNb++ % redAudio.length ].play();
     }
     if (colour == "blue") {
-        blueAudio.play();
+        blueAudio[ soundNb++ % blueAudio.length ].play();
     }
     if (colour == "green") {
-        greenAudio.play();
+        greenAudio[ soundNb++ % greenAudio.length ].play();
     }
     if (colour == "yellow") {
-        yellowAudio.play();
+        yellowAudio[ soundNb++ % yellowAudio.length ].play();
     }
     if (colour == "success") {
         successAudio.play();

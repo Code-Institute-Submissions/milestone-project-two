@@ -10,23 +10,33 @@ $(document).ready(function() {
 
         if (gameRunning != false) {
 
+            //Glow on click
+            $(this).addClass("button-glow").delay(300).queue(function() {
+                $(this).removeClass("button-glow").dequeue();
+            });
+
+
+            //Add clicked button id to stack
             clickedColours.push($(this).attr('id'));
-            $(".click-output").text("Clicked  = " + clickedColours.toString());
 
-            $(".message").text("clicked colors length = " + clickedColours.length + " ## currentTurnColours length = " + currentTurnColours.length);
+            //Check length, and compare last click each time to drop out on incorrect sequence
+            if (clickedColours.length <= currentTurnColours.length) {
 
+                //reset here if the last click was wrong
+
+            }
+
+            //Check here for same length and contents
             if (clickedColours.length == currentTurnColours.length) {
-                $(".message").text("same length, which is " + clickedColours.length);
 
                 if (!compareArrays(clickedColours, currentTurnColours)) {
-                    $(".message").text("same length, differnt contents");
+
+                    resetFunction();
 
                 }
                 else {
 
-                    $(".message").text("same length, same contents");
-                    
-                    newTurn();
+                    setTimeout(newTurn, 600);
                 }
             }
 
@@ -58,17 +68,51 @@ function startFunction() {
 
 }
 
+
+function highlightStack() {
+
+
+
+}
+
+
 function newTurn() {
-    
+
+    console.clear();
     turnCounter++;
     clickedColours.length = 0;
 
     currentTurnColours = generatedColours.slice(0, turnCounter);
-    $(".gen-output").text("Genereated = " + currentTurnColours.toString());
-    
+
+    //$(".click-output").text("Current turn colours = " + currentTurnColours.toString());
+    //$(".gen-output").text("Number of colours = " + currentTurnColours.length.toString());
+
+
+    for (var i = 0; i < currentTurnColours.length; i++) {
+
+        playColours(i);
+
+    }
+
 }
 
+function playColours(i) {
+
+    var divColour = currentTurnColours[i].toString();
+
+    setTimeout(function() {
+
+        $("#" + divColour).addClass("button-glow").delay(300).queue(function() {
+            $("#" + divColour).removeClass("button-glow").dequeue();
+        });
+
+    }, 500 * i);
+
+}
+
+
 function resetFunction() {
+
     gameRunning = 0;
     clickedColours.length = 0;
     generatedColours.length = 0;
@@ -76,7 +120,10 @@ function resetFunction() {
     $(".click-output").text("");
     $(".gen-output").text("");
     $(".message").text("");
+    $(".button").removeClass("button-glow");
+
 }
+
 
 function compareArrays(arr1, arr2) {
 

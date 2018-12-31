@@ -10,42 +10,44 @@ $(document).ready(function() {
 
         if (gameRunning != false) {
 
-            //Glow on click
-            $(this).addClass("button-glow").delay(300).queue(function() {
-                $(this).removeClass("button-glow").dequeue();
+            var colour = $(this).attr('id').toString();
+            $(this).addClass(colour + "-glow").delay(300).queue(function() {
+                $(this).removeClass(colour + "-glow").dequeue();
             });
-
 
             //Add clicked button id to stack
             clickedColours.push($(this).attr('id'));
 
             //Check length, and compare last click each time to drop out on incorrect sequence
-            if (clickedColours.length <= currentTurnColours.length) {
+            if (clickedColours.length < currentTurnColours.length) {
 
                 //reset here if the last click was wrong
-
-            }
-
-            //Check here for same length and contents
-            if (clickedColours.length == currentTurnColours.length) {
-
                 if (!compareArrays(clickedColours, currentTurnColours)) {
 
+                    alert("Not even nearly...");
                     resetFunction();
 
                 }
-                else {
 
-                    setTimeout(newTurn, 600);
-                }
             }
+            else
 
+                //Check here for same length and contents
+                if (clickedColours.length == currentTurnColours.length) {
 
+                    if (!compareArrays(clickedColours, currentTurnColours)) {
+
+                        alert("Oops, so close!");
+                        resetFunction();
+
+                    }
+                    else {
+
+                        setTimeout(newTurn, 900);
+                    }
+                }
         }
-
-
     });
-
 });
 
 
@@ -80,13 +82,12 @@ function newTurn() {
 
     console.clear();
     turnCounter++;
+
+    $(".messageHolder").text("Turn Number: " + turnCounter.toString());
+
     clickedColours.length = 0;
 
     currentTurnColours = generatedColours.slice(0, turnCounter);
-
-    //$(".click-output").text("Current turn colours = " + currentTurnColours.toString());
-    //$(".gen-output").text("Number of colours = " + currentTurnColours.length.toString());
-
 
     for (var i = 0; i < currentTurnColours.length; i++) {
 
@@ -102,11 +103,11 @@ function playColours(i) {
 
     setTimeout(function() {
 
-        $("#" + divColour).addClass("button-glow").delay(300).queue(function() {
-            $("#" + divColour).removeClass("button-glow").dequeue();
+        $("#" + divColour).addClass(divColour + "-glow").delay(300).queue(function() {
+            $("#" + divColour).removeClass(divColour + "-glow").dequeue();
         });
 
-    }, 500 * i);
+    }, 620 * i);
 
 }
 
@@ -121,6 +122,7 @@ function resetFunction() {
     $(".gen-output").text("");
     $(".message").text("");
     $(".button").removeClass("button-glow");
+    $(".messageHolder").text("");
 
 }
 

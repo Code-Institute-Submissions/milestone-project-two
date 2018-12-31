@@ -3,22 +3,29 @@ html, body {
     padding: 0;
     background-color: #000;
     color: #ffffff;
+    font-family: 'Roboto', sans-serif;
 }
 
+.container {
+    margin: 0 auto;
+    width: 800px;
+    height: 800px;
+    text-align: center;
+}
 .button-container {
     margin: 0 auto;
-    width: 500px;
-    height: 500px;
+    width: 700px;
+    height: 700px;
     padding: 20px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .button {
     display: inline-block;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin: 20px;
-    border: 1px solid #000;
+    border: 3px solid #fff;
     border-radius:50px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -26,9 +33,40 @@ html, body {
     transition: all 0.5s ease;
 }
 
-.button-glow {
+.red-glow {
     background:#ef5d22;
-    box-shadow: 0 0 20px #fff;
+    background-color: #ff4b4b !important;
+    box-shadow: 0 0 30px #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.blue-glow {
+    background:#ef5d22;
+    background-color: #4286f4 !important;
+    box-shadow: 0 0 30px #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.green-glow {
+    background:#ef5d22;
+    background-color: #1ff91f !important;
+    box-shadow: 0 0 30px #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.yellow-glow {
+    background:#ef5d22;
+    background-color: #fefe75 !important;
+    box-shadow: 0 0 30px #fff;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -49,9 +87,4 @@ html, body {
 
 #yellow {
     background-color: yellow;
-}
-
-.blacken {
-    background-color: #000;
-    border: 5px solid #fff;
 }

@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simon Game</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css" type="text/css" />
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -17,21 +18,22 @@
 
 <body>
 
-
-
+    <nav class="navbar" style="background-color: #108187">
+        <h1>Simon Says!</h1>
+        <span>
+            Choose your difficulty:&nbsp;
+            <select name="difficulty" onclick="changeDifficulty(this.value)">
+                <option selected="selected" value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </span>
+    </nav>
+        
     <div class="container">
 
-        <h1>Simon Game</h1>
-        <h3 class="messageHolder">Click to begin!</h3>
-
-        <button onclick="setTimeout(startFunction, 500)">Start</button>
-        <button onclick="resetFunction()">Reset</button>
-        
-        <select name="difficulty" onclick="changeDifficulty(this.value)">
-            <option selected="selected" value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
+        <button class="btn btn-success" onclick="setTimeout(startFunction, 500)">Start</button>
+        <button class="btn btn-danger" onclick="resetFunction()">Reset</button>
 
 
         <div class="button-container">
@@ -40,6 +42,7 @@
             <div id="green" class="button"></div>
             <div id="yellow" class="button"></div>
         </div>
+
     </div>
 
 </body>

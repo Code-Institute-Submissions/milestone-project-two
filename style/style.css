@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     background-color: #000;
@@ -8,33 +9,102 @@ html, body {
 
 .container {
     margin: 0 auto;
-    width: 800px;
-    height: 800px;
+    margin-top: 10px;
     text-align: center;
 }
+
 .button-container {
     margin: 0 auto;
-    width: 700px;
-    height: 700px;
-    padding: 20px;
-    margin-top: 30px;
+    width: 280px;
+    height: 280px;
 }
 
 .button {
     display: inline-block;
-    width: 300px;
-    height: 300px;
-    margin: 20px;
+    width: 40%;
+    height: 40%;
     border: 3px solid #fff;
-    border-radius:50px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
+/* Custom, iPhone Retina */
+
+@media only screen and (min-width: 320px) {
+    .button-container {
+        width: 280px;
+        height: 280px;
+        padding: 0px;
+        margin-top: 10px;
+    }
+
+    .button {
+        border-radius: 10px;
+    }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 480px) {
+    .button-container {
+        width: 350px;
+        height: 350px;
+        margin-top: 30px;
+    }
+
+    .button {
+        border-radius: 30px;
+    }
+}
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 768px) {
+    .button-container {
+        width: 550px;
+        height: 550px;
+        margin-top: 30px;
+    }
+
+    .button {
+        border-radius: 30px;
+    }
+}
+
+/* Medium Devices, Desktops */
+
+@media only screen and (min-width: 992px) {
+
+    .button-container {
+        width: 600px;
+        height: 600px;
+        margin-top: 30px;
+    }
+
+    .button {
+        border-radius: 40px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1200px) {
+
+    .button-container {
+        width: 800px;
+        height: 800px;
+        margin-top: 50px;
+    }
+
+    .button {
+        border-radius: 40px;
+    }
+}
+
 .red-glow {
-    background:#ef5d22;
+    background: #ef5d22;
     background-color: #ff4b4b !important;
     box-shadow: 0 0 30px #fff;
     -webkit-transition: all 0.5s ease;
@@ -44,7 +114,7 @@ html, body {
 }
 
 .blue-glow {
-    background:#ef5d22;
+    background: #ef5d22;
     background-color: #4286f4 !important;
     box-shadow: 0 0 30px #fff;
     -webkit-transition: all 0.5s ease;
@@ -54,7 +124,7 @@ html, body {
 }
 
 .green-glow {
-    background:#ef5d22;
+    background: #ef5d22;
     background-color: #1ff91f !important;
     box-shadow: 0 0 30px #fff;
     -webkit-transition: all 0.5s ease;
@@ -64,7 +134,7 @@ html, body {
 }
 
 .yellow-glow {
-    background:#ef5d22;
+    background: #ef5d22;
     background-color: #fefe75 !important;
     box-shadow: 0 0 30px #fff;
     -webkit-transition: all 0.5s ease;
@@ -74,17 +144,17 @@ html, body {
 }
 
 #red {
-    background-color: red;
+    background-color: #cc2936;
 }
 
 #blue {
-    background-color: blue;
+    background-color: #08415c;
 }
 
 #green {
-    background-color: green;
+    background-color: #88ab75;
 }
 
 #yellow {
-    background-color: yellow;
+    background-color: #dbd56e;
 }

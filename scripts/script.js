@@ -5,7 +5,6 @@ var turnCounter = 0;
 var currentTurnColours = [];
 var totalTurns = 5;
 var colours = ['red', 'blue', 'green', 'yellow'];
-//var colours = ['red', 'red', 'red', 'red'];
 var speedSetting = 800;
 
 var audioOn = true;
@@ -136,7 +135,6 @@ function changeDifficulty(val) {
 
 function newTurn() {
 
-    console.log(speedSetting);
     turnCounter++;
 
     $(".messageHolder").text("Turn Number: " + turnCounter.toString());
@@ -199,6 +197,7 @@ function compareArrays(arr1, arr2) {
 
 function playAudio(colour) {
 
+    /* Here we use soundNb to act as a counter we modulus to play alternating versions of the same sound from an array to prevent sound overlap occuring */
     if (colour == "red") {
         redAudio[ soundNb++ % redAudio.length ].play();
     }

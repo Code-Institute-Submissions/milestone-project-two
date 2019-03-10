@@ -1,6 +1,6 @@
 # Simon Says! Pattern Recognition Game
 
-Face off against the machine in a pattern recognition pressure test. Simply choose your difficulty and click Start to see if you've got what it takes to beat Simon!
+Face off against the machine in a pattern recognition pressure test. Simply choose your difficulty and click Start to see if you've got what it takes to beat Simon! https://huckcity.github.io/milestone-project-two/
  
 ## UX
 
